@@ -1,0 +1,25 @@
+[2021/10/30 16:24:48] root INFO: length_train: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: length_dev: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: traindataloader_0: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: devdataloader_0: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: traindataloader_1: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: devdataloader_1: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: traindataloader_2: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: devdataloader_2: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: traindataloader_3: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: devdataloader_3: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: traindataloader_4: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: devdataloader_4: 
+[2021/10/30 16:24:48] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/30 16:24:48] root INFO: diff check passed

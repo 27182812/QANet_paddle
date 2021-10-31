@@ -1,0 +1,41 @@
+[2021/10/31 16:41:52] root INFO: loss0: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/31 16:41:52] root INFO: lr0: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: True, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss1: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 7.62939453125e-06
+[2021/10/31 16:41:52] root INFO: lr1: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss2: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.001338958740234375
+[2021/10/31 16:41:52] root INFO: lr2: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss3: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.00290679931640625
+[2021/10/31 16:41:52] root INFO: lr3: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss4: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.019567489624023438
+[2021/10/31 16:41:52] root INFO: lr4: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss5: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.017833709716796875
+[2021/10/31 16:41:52] root INFO: lr5: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss6: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.00672149658203125
+[2021/10/31 16:41:52] root INFO: lr6: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss7: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.03524208068847656
+[2021/10/31 16:41:52] root INFO: lr7: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss8: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.07494735717773438
+[2021/10/31 16:41:52] root INFO: lr8: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: loss9: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.00670623779296875
+[2021/10/31 16:41:52] root INFO: lr9: 
+[2021/10/31 16:41:52] root INFO: 	mean diff: check passed: False, value: 0.0
+[2021/10/31 16:41:52] root INFO: diff check failed
