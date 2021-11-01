@@ -356,14 +356,14 @@ def main(args):
     #     model = paddle.DataParallel(model)
     # model.to(device)
 
-    # exponential moving average
-    ema = EMA(args.decay)
-    if args.use_ema:
-        for name, param in model.named_parameters():
-            # print("111",type(param))
-            if not param.stop_gradient:
-                # print(name, param.shape)
-                ema.register(name, param)
+    # # exponential moving average
+    # ema = EMA(args.decay)
+    # if args.use_ema:
+    #     for name, param in model.named_parameters():
+    #         # print("111",type(param))
+    #         if not param.stop_gradient:
+    #             # print(name, param.shape)
+    #             ema.register(name, param)
 
     # set optimizer and scheduler
     cr = 1.0 / math.log(args.lr_warm_up_num)
@@ -402,6 +402,16 @@ def main(args):
     identifier = type(model).__name__ + '_'
 
     model = paddle.DataParallel(model)
+
+    # exponential moving average
+    ema = EMA(args.decay)
+    if args.use_ema:
+        for name, param in model.named_parameters():
+            # print("111",type(param))
+            if not param.stop_gradient:
+                # print(name, param.shape)
+                # sys.exit(0)
+                ema.register(name, param)
 
     trainer = Trainer(
         args, model, loss,

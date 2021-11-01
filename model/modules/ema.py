@@ -18,7 +18,7 @@ class EMA():
         # print(self.shadow)
         for name, param in model.named_parameters():
             if not param.stop_gradient:
-                name = name.replace("_layers.","")
+                # name = name.replace("_layers.","")
                 # print(name)
                 assert name in self.shadow
                 new_average = \
