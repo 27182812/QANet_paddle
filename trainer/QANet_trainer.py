@@ -10,7 +10,6 @@ import paddle.nn.functional as F
 from datetime import datetime
 from .metric import convert_tokens, evaluate_by_dict
 from util.file_utils import pickle_load_large_file
-from reprod_log import ReprodLogger
 import numpy as np
 
 
@@ -72,10 +71,10 @@ class Trainer(object):
         if resume:
             self._resume_checkpoint(resume)
             # self.model = self.model.to(self.device)
-            for state in self.optimizer.state.values():
-                for k, v in state.items():
-                    if isinstance(v, paddle.Tensor):
-                        state[k] = v
+            # for state in self.optimizer.state.values():
+            #     for k, v in state.items():
+            #         if isinstance(v, paddle.Tensor):
+            #             state[k] = v
 
     def train(self):
         patience = 0
@@ -99,9 +98,9 @@ class Trainer(object):
             self.best_f1 = max(self.best_f1, result["f1"])
             self.best_em = max(self.best_em, result["em"])
 
-            if epoch % self.save_freq == 0:
-                self._save_checkpoint(
-                    epoch, result["f1"], result["em"], is_best)
+            # if epoch % self.save_freq == 0:
+            #     self._save_checkpoint(
+            #         epoch, result["f1"], result["em"], is_best)
 
     def _train_epoch(self, epoch):
         self.model.train()
@@ -115,7 +114,7 @@ class Trainer(object):
         self.model.train()
         # train over batches
 
-        reprod_logger = ReprodLogger()
+        # reprod_logger = ReprodLogger()
         # with paddle.no_grad():
         fake_batch = None
         for batch_idx, batch in enumerate(self.train_data_loader):
@@ -243,6 +242,9 @@ class Trainer(object):
         result = {}
         result["em"] = metrics["exact_match"]
         result["f1"] = metrics["f1"]
+        if result["em"] >= 65.0 and result["f1"] >= 75.0:
+            self._save_checkpoint(epoch, result["f1"], result["em"], False)
+
         return result
 
     def _valid_eopch(self, eval_dict, data_loader):

@@ -19,10 +19,8 @@ from trainer.QANet_trainer import Trainer
 # from util.visualize import Visualizer
 from model.modules.ema import EMA
 from util.file_utils import pickle_load_large_file
-from reprod_log import ReprodLogger
 
-
-data_folder = "datasets/"
+data_folder = "/home/aistudio/data/data114340/datasets/"
 parser = argparse.ArgumentParser(description='Lucy')
 
 # dataset
