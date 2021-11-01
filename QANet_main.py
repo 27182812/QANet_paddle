@@ -28,7 +28,7 @@ parser = argparse.ArgumentParser(description='Lucy')
 # dataset
 parser.add_argument(
     '--processed_data',
-    default=True, action='store_true',
+    default=True, action='store_false',
     help='whether the dataset already processed')
 parser.add_argument(
     '--train_file',
