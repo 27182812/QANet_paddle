@@ -105,7 +105,7 @@ class Highway(nn.Layer):
 
     def forward(self, x):
         #x: shape [batch_size, hidden_size, length]
-        dropout = 0
+        dropout = 0.1
         for i in range(self.n):
             gate = F.sigmoid(self.gate[i](x))
             nonlinear = self.linear[i](x)
@@ -211,7 +211,7 @@ class SelfAttention(nn.Layer):
 
 class Embedding(nn.Layer):
     def __init__(self, wemb_dim, cemb_dim, d_model,
-                 dropout_w=0, dropout_c=0):
+                 dropout_w=0.1, dropout_c=0.05):
         super().__init__()
         self.conv2d = nn.Conv2D(cemb_dim, d_model, kernel_size = (1,5), padding=0, bias_attr=True, weight_attr=paddle.nn.initializer.KaimingNormal())
         self.conv1d = Initialized_Conv1d(wemb_dim + d_model, d_model, bias=False)
@@ -235,7 +235,7 @@ class Embedding(nn.Layer):
 
 
 class EncoderBlock(nn.Layer):
-    def __init__(self, conv_num, d_model, num_head, k, dropout=0):
+    def __init__(self, conv_num, d_model, num_head, k, dropout=0.1):
         super().__init__()
         self.convs = nn.LayerList([DepthwiseSeparableConv(d_model, d_model, k) for _ in range(conv_num)])
         self.self_att = SelfAttention(d_model, num_head, dropout=dropout)
@@ -287,7 +287,7 @@ class EncoderBlock(nn.Layer):
 
 
 class CQAttention(nn.Layer):
-    def __init__(self, d_model, dropout=0):
+    def __init__(self, d_model, dropout=0.1):
         super().__init__()
         w4C = paddle.empty([d_model, 1])
         w4Q = paddle.empty([d_model, 1])
@@ -347,7 +347,7 @@ class Pointer(nn.Layer):
 class QANet(nn.Layer):
     def __init__(self, word_mat, char_mat,
                  c_max_len, q_max_len, d_model, train_cemb=False, pad=0,
-                 dropout=0, num_head=1):  # !!! notice: set it to be a config parameter later.
+                 dropout=0.1, num_head=1):  # !!! notice: set it to be a config parameter later.
         super().__init__()
         if train_cemb:
             self.char_emb = nn.Embedding(char_mat.shape[0],char_mat.shape[1],sparse=False)
@@ -363,10 +363,10 @@ class QANet(nn.Layer):
         cemb_dim = char_mat.shape[1]
         self.emb = Embedding(wemb_dim, cemb_dim, d_model)
         self.num_head = num_head
-        self.emb_enc = EncoderBlock(conv_num=4, d_model=d_model, num_head=num_head, k=7, dropout=0)
+        self.emb_enc = EncoderBlock(conv_num=4, d_model=d_model, num_head=num_head, k=7, dropout=0.1)
         self.cq_att = CQAttention(d_model=d_model)
         self.cq_resizer = Initialized_Conv1d(d_model * 4, d_model)
-        self.model_enc_blks = nn.LayerList([EncoderBlock(conv_num=2, d_model=d_model, num_head=num_head, k=5, dropout=0) for _ in range(7)])
+        self.model_enc_blks = nn.LayerList([EncoderBlock(conv_num=2, d_model=d_model, num_head=num_head, k=5, dropout=0.1) for _ in range(7)])
         self.out = Pointer(d_model)
         self.PAD = pad
         self.Lc = c_max_len
