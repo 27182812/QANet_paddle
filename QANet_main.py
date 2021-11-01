@@ -19,6 +19,7 @@ from trainer.QANet_trainer import Trainer
 # from util.visualize import Visualizer
 from model.modules.ema import EMA
 from util.file_utils import pickle_load_large_file
+import paddle.distributed as dist
 
 data_folder = "/home/aistudio/data/data114340/datasets/"
 parser = argparse.ArgumentParser(description='Lucy')
@@ -250,6 +251,15 @@ parser.add_argument(
 def main(args):
     # show configuration
     print(args)
+    # print(args.lr)
+
+    dist.init_parallel_env()
+    world_size = paddle.distributed.get_world_size()
+    local_rank = paddle.distributed.get_rank()
+
+
+
+
     random_seed = None
 
     if random_seed is not None:
@@ -390,6 +400,9 @@ def main(args):
     # construct trainer
     # an identifier (prefix) for saved model
     identifier = type(model).__name__ + '_'
+
+    model = paddle.DataParallel(model)
+
     trainer = Trainer(
         args, model, loss,
         train_data_loader=train_dataloader,
@@ -428,4 +441,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    main(parser.parse_args())
+    args=parser.parse_args()
+    dist.spawn(main, args=(args,), nprocs=1)
+    # main(parser.parse_args())
