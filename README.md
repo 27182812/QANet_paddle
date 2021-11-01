@@ -79,3 +79,36 @@
 - 包：
   - spacy
   - ujson
+
+## 五、快速开始
+
+### step1: clone 
+
+```bash
+# clone this repo
+git clone git@github.com:27182812/QANet_paddle.git
+cd QANet_paddle
+```
+**安装依赖**
+```bash
+pip install -r requestments.txt
+```
+
+### step2: 数据准备
+
+1. 在顶层目录下创建datasets/original文件夹，在次文件下将[glove.840B.300d.txt](https://www.kaggle.com/takuok/glove840b300dtxt)放入Glove文件夹，SQuAD数据集放入SQuAD文件夹下。如下图所示：
+2. 初次运行时，加上`--processed_data`,会对数据进行预处理，处理后的数据放datasets/original/processed文件夹下。下次运行可直接加载。
+
+![数据6图](imgs/6.png)
+
+![数据7图](imgs/7.png)
+
+### step3: 训练
+
+1. 在顶层目录下放入预训练权重（初始化pytorch版权重转换为pdparams格式），地址为：https://aistudio.baidu.com/aistudio/datasetdetail/114636 。
+2. 运行`QANet_main.py`
+
+```bash
+python QANet_main.py --batch_size 32 --epochs 60 --with_cuda --use_ema
+```
+
