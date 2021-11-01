@@ -79,7 +79,6 @@
 - 包：
   - spacy
   - ujson
-
 ## 五、快速开始
 
 ### step1: clone 
@@ -111,4 +110,51 @@ pip install -r requestments.txt
 ```bash
 python QANet_main.py --batch_size 32 --epochs 60 --with_cuda --use_ema
 ```
+
+## 六、代码结构与详细说明
+
+### 6.1 代码结构
+
+```
+├─data_loader                     # 数据加载
+├─datasets                        # 数据集
+├─imgs                            # 说明图片
+├─log_reprod                      # 对齐文件
+├─model                           # 模型
+├─trainer                         # 训练
+├─util                            # 工具函数
+│  README.md                      # 英文readme
+│  README_CN.md                   # 中文readme
+│  requirements.txt               # 依赖
+│  QANet_main.py                  # 运行文件
+```
+### 6.2 参数说明
+
+可以在 `QANet_main.py` 中设置训练与评估相关参数，主要参数列举如下：
+
+| 参数         | 默认值        | 说明                                   | 其他        |
+| ------------ | ------------- | -------------------------------------- | ----------- |
+| --batch_size | 32,      可选 | 训练批次                               |             |
+| --epochs     | 30，   可选   | 训练轮次                               |             |
+| --with_cuda  | False, 可选   | 是否使用GPU                            | 无GPU可不加 |
+| --use_ema    | False, 可选   | whether use exponential moving average |             |
+| --lr         | 0.001,可选    | 学习率                                 |             |
+
+### 6.3 训练流程
+
+详见 五、快速开始
+
+## 七、模型信息
+
+关于模型的其他信息，可以参考下表：
+
+| 信息     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| 发布者   | 钱宇珊                                                       |
+| 时间     | 2021.10                                                      |
+| 框架版本 | Paddle 2.2.0rc0                                              |
+| 应用场景 | 自然语言处理、阅读理解                                       |
+| 支持硬件 | GPU、CPU                                                     |
+| 下载链接 | [训练好的模型]()                                             |
+| 在线运行 | [notebook](https://aistudio.baidu.com/aistudio/projectdetail/2542813) |
 
