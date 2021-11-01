@@ -1,6 +1,6 @@
-QANET_paddle
+## QANET_paddle
 
-English| [简体中文](./README_CN.md) 
+English | [简体中文](./README_CN.md) 
 
  * [QANET_paddle](#QANET_paddle)
      * [1、Introduction](#1-Introduction)
