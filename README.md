@@ -24,7 +24,7 @@ English | [简体中文](./README_CN.md)
 
 
 
-## 一、Introduction
+## 1、Introduction
 
 This project is based on the paddlepaddle_v2.2.0rc0 framework to reproduce QANET(ICLR 2018)[链接 ](https://arxiv.org/abs/1804.09541)。
 
@@ -42,7 +42,7 @@ The current end-to-end machine reading and question answering models are mainly 
 
 - notebook：
 
-## 二、Accuracy+Align
+## 2、Accuracy+Align
 
 The model is trained + verified on the SQuAD1.1 dataset.
 
@@ -84,7 +84,7 @@ Align result is as follows：
 
 
 
-## 三、Dataset
+## 3、Dataset
 
 [SQuAD1.1](https://datarepository.wolframcloud.com/resources/SQuAD-v1.1)
 
@@ -93,7 +93,7 @@ Align result is as follows：
   - dev：10.1K
 - data format：TEXT，JSON
 
-## 四、Environment
+## 4、Environment
 
 - Hardware：CPU、GPU（16G and above）
 - Framework：
