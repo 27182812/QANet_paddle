@@ -93,6 +93,8 @@
 
 ![结果8图](imgs/8.png)
 
+权重文件：https://aistudio.baidu.com/aistudio/datasetdetail/114931
+
 ## 三、数据集
 
 [SQuAD1.1](https://datarepository.wolframcloud.com/resources/SQuAD-v1.1)
