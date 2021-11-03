@@ -40,7 +40,7 @@ The current end-to-end machine reading and question answering models are mainly 
 
 **Project AI Studio address：**
 
-- notebook：
+- notebook：https://aistudio.baidu.com/aistudio/projectdetail/2558567
 
 ## 2、Accuracy+Align
 
