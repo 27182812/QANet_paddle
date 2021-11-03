@@ -5,7 +5,7 @@ reference: https://github.com/andy840314/QANet-pytorch-
 """
 import sys
 import os
-sys.path.append(os.path.dirname("C://Users//QYS//Desktop//QANet-paddle//model"))
+# sys.path.append(os.path.dirname("C://Users//QYS//Desktop//QANet-paddle//model"))
 import math
 import numpy as np
 import paddle
@@ -190,10 +190,10 @@ class SelfAttention(nn.Layer):
         new_shape = old_shape[:-1] + [n] + [last // n if last else None]
         # print("111",old_shape,last,new_shape)
         ret = paddle.reshape(x,shape=new_shape)
-        if ret.dim == 3:
-            return paddle.transpose(ret, perm=[0, 2, 1])
-        else:
-            return paddle.transpose(ret, perm=[0, 2, 1, 3])
+        # if ret.dim == 3:
+        #     return paddle.transpose(ret, perm=[0, 2, 1])
+        # else:
+        return paddle.transpose(ret, perm=[0, 2, 1, 3])
 
     def combine_last_two_dim(self, x):
         """Reshape x so that the last two dimension become one.
@@ -354,7 +354,10 @@ class QANet(nn.Layer):
             self.char_emb.weight.set_value(char_mat)
             # self.char_emb = nn.Embedding.from_pretrained(char_mat, freeze=False)
         else:
-            self.char_emb = nn.Embedding.from_pretrained(char_mat)
+            self.char_emb = nn.Embedding(char_mat.shape[0], char_mat.shape[1], sparse=False)
+            self.char_emb.weight.set_value(char_mat)
+            self.char_emb.weight.stop_gradient = True
+
         self.word_emb = nn.Embedding(word_mat.shape[0], word_mat.shape[1], sparse=False)
         self.word_emb.weight.set_value(word_mat)
         self.word_emb.weight.stop_gradient = True

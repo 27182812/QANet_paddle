@@ -111,7 +111,7 @@ class Trainer(object):
         last_step = self.step - 1
         last_time = time.time()
 
-        self.model.train()
+        # self.model.train()
         # train over batches
 
         # reprod_logger = ReprodLogger()
@@ -141,10 +141,10 @@ class Trainer(object):
             context_cids = context_cids
             question_wids = question_wids
             question_cids = question_cids
-            y1 = y1
-            y2 = y2
-            id = id
-            answerable = answerable
+            # y1 = y1
+            # y2 = y2
+            # id = id
+            # answerable = answerable
 
             # calculate loss
             # self.model.zero_grad
@@ -274,9 +274,9 @@ class Trainer(object):
                 context_cids = context_cids
                 question_wids = question_wids
                 question_cids = question_cids
-                y1 = y1
-                y2 = y2
-                answerable = answerable
+                # y1 = y1
+                # y2 = y2
+                # answerable = answerable
                 # print("context_wids",context_wids)
                 # print("context_cids",context_cids)
                 # print("question_wids",question_wids)

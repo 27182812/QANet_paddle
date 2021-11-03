@@ -398,10 +398,13 @@ def collate(data):
 
 def get_loader(examples_file, batch_size, shuffle=True):
     dataset = SQuAD(examples_file)
+    batch_sampler = paddle.io.DistributedBatchSampler(
+        dataset, batch_size=batch_size, shuffle=shuffle)
     data_loader = DataLoader(
         dataset=dataset,
         batch_size=batch_size,
         shuffle=shuffle,
+        batch_sampler=batch_sampler,
         num_workers=0,  # num_works > 0 may cause RequestRefused error
         collate_fn=collate)
     return data_loader

@@ -252,13 +252,12 @@ def main(args):
     # show configuration
     print(args)
     # print(args.lr)
-
-    dist.init_parallel_env()
+    paddle.set_device(args.device)
+    if paddle.distributed.get_world_size() > 1:
+        paddle.distributed.init_parallel_env()
+    # dist.init_parallel_env()
     world_size = paddle.distributed.get_world_size()
     local_rank = paddle.distributed.get_rank()
-
-
-
 
     random_seed = None
 
@@ -299,10 +298,10 @@ def main(args):
     dev_dataloader = get_loader(
         args.dev_examples_file, args.batch_size, shuffle=True)
 
-    train_dataloader = get_loader(
-        args.train_examples_file, args.batch_size, shuffle=False)
-    dev_dataloader = get_loader(
-        args.dev_examples_file, args.batch_size, shuffle=False)
+    # train_dataloader = get_loader(
+    #     args.train_examples_file, args.batch_size, shuffle=False)
+    # dev_dataloader = get_loader(
+    #     args.dev_examples_file, args.batch_size, shuffle=False)
 
     # logger_paddle_data = ReprodLogger()
 
@@ -357,13 +356,13 @@ def main(args):
     # model.to(device)
 
     # # exponential moving average
-    # ema = EMA(args.decay)
-    # if args.use_ema:
-    #     for name, param in model.named_parameters():
-    #         # print("111",type(param))
-    #         if not param.stop_gradient:
-    #             # print(name, param.shape)
-    #             ema.register(name, param)
+    ema = EMA(args.decay)
+    if args.use_ema:
+        for name, param in model.named_parameters():
+            # print("111",type(param))
+            if not param.stop_gradient:
+                # print(name, param.shape)
+                ema.register(name, param)
 
     # set optimizer and scheduler
     cr = 1.0 / math.log(args.lr_warm_up_num)
@@ -401,17 +400,17 @@ def main(args):
     # an identifier (prefix) for saved model
     identifier = type(model).__name__ + '_'
 
-    model = paddle.DataParallel(model)
+    # model = paddle.DataParallel(model)
 
     # exponential moving average
-    ema = EMA(args.decay)
-    if args.use_ema:
-        for name, param in model.named_parameters():
-            # print("111",type(param))
-            if not param.stop_gradient:
-                # print(name, param.shape)
-                # sys.exit(0)
-                ema.register(name, param)
+    # ema = EMA(args.decay)
+    # if args.use_ema:
+    #     for name, param in model.named_parameters():
+    #         # print("111",type(param))
+    #         if not param.stop_gradient:
+    #             # print(name, param.shape)
+    #             # sys.exit(0)
+    #             ema.register(name, param)
 
     trainer = Trainer(
         args, model, loss,

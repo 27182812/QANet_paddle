@@ -13,10 +13,10 @@ def OpenAITransformer_loss(lm_criterion, clf_criterion, lm_coef,
                            X, Y, M, clf_logits, lm_logits=None):
     # language modeling loss
     if lm_logits is not None:
-        x_shifted = X[:, :, 1:, 0].contiguous().view(-1)  # Shape: 252
-        M = M.view(-1, M.size(2))
+        x_shifted = X[:, :, 1:, 0].reshape([-1])  # Shape: 252
+        M = M.reshape([-1, M.shape[2]])
         lm_losses = lm_criterion(lm_logits, x_shifted)
-        lm_losses = lm_losses.view(X.size(0) * X.size(1), X.size(2) - 1)
+        lm_losses = lm_losses.reshape([X.shape[0] * X.shape[1], X.shape[2] - 1])
         lm_losses = lm_losses * M[:, 1:]
         lm_losses = lm_losses.sum(1) / paddle.sum(M[:, 1:], 1)
 
@@ -62,7 +62,7 @@ class Loss(object):
     def __init__(self, name, criterion):
         self.name = name
         self.criterion = criterion
-        if not issubclass(type(self.criterion), nn.modules.loss._Loss):
+        if not issubclass(type(self.criterion), nn.Layer.loss._Loss):
             raise ValueError(
                 "Criterion has to be a subclass of torch.nn._Loss")
         # accumulated loss

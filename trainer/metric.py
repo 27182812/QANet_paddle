@@ -9,7 +9,7 @@ import sys
 import paddle
 import numpy as np
 from collections import Counter
-from reprod_log import ReprodLogger
+# from reprod_log import ReprodLogger
 
 
 def normalize_answer(s):
@@ -133,7 +133,7 @@ def em_by_begin_end_index(pred_begin, pred_end, begin, end):
     Calculate exact match score given the token index tensors of
     prediction boundary and true answer boundary.
     """
-    batch_num = pred_begin.size(0)
+    batch_num = pred_begin.shape[0]
     exact_correct_num = paddle.sum(
         (pred_begin == begin) * (pred_end == end))
     em = exact_correct_num.item() / batch_num
@@ -145,7 +145,7 @@ def f1_by_begin_end_index(pred_begin, pred_end, begin, end):
     Calculate F1 score given the token index tensors of
     prediction boundary and true answer boundary.
     """
-    batch_size = pred_begin.size(0)
+    batch_size = pred_begin.shape[0]
     f1_all = []
     for i in range(batch_size):
         pred = range(int(pred_begin[i]), int(pred_end[i] + 1))
@@ -237,9 +237,9 @@ if __name__ == "__main__":
     ends = [[3, 2], [3, 3], [3, 3]]
     print(em_by_begin_end_index_max(pred_begin, pred_end, begins, ends))
     print(f1_by_begin_end_index_max(pred_begin, pred_end, begins, ends))
-    reprod_logger = ReprodLogger() 
+    # reprod_logger = ReprodLogger()
 
-    reprod_logger.add("em", np.array(em_by_begin_end_index_max(pred_begin, pred_end, begins, ends)))
-    reprod_logger.add("f1", np.array(f1_by_begin_end_index_max(pred_begin, pred_end, begins, ends)))
-  
-    reprod_logger.save("metric_paddle.npy")
+    # reprod_logger.add("em", np.array(em_by_begin_end_index_max(pred_begin, pred_end, begins, ends)))
+    # reprod_logger.add("f1", np.array(f1_by_begin_end_index_max(pred_begin, pred_end, begins, ends)))
+    #
+    # reprod_logger.save("metric_paddle.npy")

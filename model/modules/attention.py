@@ -67,7 +67,7 @@ class MultiHeadAttention(nn.Layer):
         """
         if mask is not None:
             mask = mask.unsqueeze(1)
-        nbatches = query.size(0)
+        nbatches = query.shape[0]
 
         # Do all the linear projections in batch from d_model => h x d_k
         query, key, value = [
@@ -81,8 +81,8 @@ class MultiHeadAttention(nn.Layer):
             query, key, value, mask=mask)
 
         # "Concat" using a view and apply a final linear.
-        x = x.transpose(1, 2).contiguous().view(
-            nbatches, -1, self.h * self.d_k)
+        x = x.transpose(perm = [0, 2, 1]).reshape(
+            [nbatches, -1, self.h * self.d_k])
         return self.linears[-1](x), self.attn
 
 
