@@ -82,6 +82,9 @@ Align result is as follows：
 
 ![对齐5图](imgs/5.png)
 
+### step6: Results
+
+![结果8图](imgs/8.png)
 
 
 ## 3、Dataset
