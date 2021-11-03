@@ -38,9 +38,9 @@
 
 - [BangLiu/QANet-PyTorch: Re-implement "QANet: Combining Local Convolution with Global Self-Attention for Reading Comprehension" (github.com)](https://github.com/BangLiu/QANet-PyTorch)
 
-**项目aistudio地址：** https://aistudio.baidu.com/aistudio/projectdetail/2558567
+**项目aistudio地址：** 
 
-- notebook任务：
+- notebook任务：https://aistudio.baidu.com/aistudio/projectdetail/2558567
 
 ## 二、复现精度+对齐
 
