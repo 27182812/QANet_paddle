@@ -85,9 +85,11 @@ Align result is as follows：
 ### step6: Results
 
 Original repo operation results（Tried several times, and the original author of the same configuration and parameters, can not run his effect）：
+
 ![结果9图](imgs/9.png)
 
 Running results of this code：
+
 ![结果8图](imgs/8.png)
 
 
