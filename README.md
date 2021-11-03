@@ -92,6 +92,7 @@ Running results of this code：
 
 ![结果8图](imgs/8.png)
 
+weight file: https://aistudio.baidu.com/aistudio/datasetdetail/114931
 
 ## 3、Dataset
 
