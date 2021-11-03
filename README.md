@@ -84,6 +84,10 @@ Align result is as follows：
 
 ### step6: Results
 
+参考repo运行结果图（试了好几次，和原作者一样的配置和参数，跑不到他的效果）：
+![结果9图](imgs/9.png)
+
+本代码运行结果：
 ![结果8图](imgs/8.png)
 
 
